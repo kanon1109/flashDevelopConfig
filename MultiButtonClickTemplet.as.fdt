@@ -1,0 +1,68 @@
+package $(Package) $(CSLB)
+{
+import flash.display.Sprite;
+import flash.utils.Dictionary;
+import flash.events.MouseEvent;
+/**
+$(CBI)* ...
+$(CBI)* @author $(DefaultUser)
+$(CBI)*/
+public class $(FileName) extends Sprite $(CSLB)
+{
+	private var dictionary:Dictionary
+	public function $(FileName)() $(CSLB)
+	{
+		this.initData();
+		this.initUI();
+	}
+	/**
+	 * 初始化数据
+	 */
+	private function initData():void
+	{
+		this.dictionary = new Dictionary();
+	}
+	
+	/**
+	 * 初始化按钮
+	 */
+	private function initUI():void
+	{
+		for (var i:int = 1; this.getChildByName("b" + i); i += 1)
+		{	
+			var btn:Sprite = this.getChildByName("b" + i) as Sprite;
+			btn.addEventListener(MouseEvent.CLICK, clickHandler)
+			this.dictionary[btn] = i;
+		}
+	}
+	
+	private function clickHandler(event:MouseEvent):void
+	{
+		this.remove();
+	}
+	
+	/**
+	 * 销毁事件
+	 */
+	private function removeEvent():void
+	{
+		for (var i:int = 1; this.getChildByName("b" + i); i += 1)
+		{	
+			var btn:Sprite = this.getChildByName("b" + i) as Sprite;
+			btn.removeEventListener(MouseEvent.CLICK, clickHandler);
+		}
+	}
+	
+	/**
+	 * 销毁
+	 */
+	public function remove():void
+	{
+		this.dictionary = null;
+		this.removeEvent();
+		if (this && this.parent)
+			this.parent.removeChild(this);
+	}
+
+}
+}
