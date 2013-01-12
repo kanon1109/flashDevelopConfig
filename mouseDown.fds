@@ -1,0 +1,1 @@
+addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHanler)

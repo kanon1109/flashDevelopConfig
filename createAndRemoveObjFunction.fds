@@ -1,0 +1,13 @@
+private function create():void
+{
+	if (this.obj) return;
+	this.obj = new Class();
+	this.addChild(this.obj);
+}
+
+private function remove():void
+{
+	if (this.obj)
+		this.obj.remove();
+	this.obj = null;
+}
